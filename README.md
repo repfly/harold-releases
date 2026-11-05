@@ -14,7 +14,7 @@
 
 </div>
 
-![A tour of Harold: board, git, builds, traffic, rules, mocks, logs and agents](docs/media/harold-demo.gif)
+![A tour of Harold: board, git, builds, traffic, backend targets, compare, rules, mocks, drift, logs and agents](docs/media/harold-demo.gif)
 
 <sub>The screens are mockups with sample data.</sub>
 
@@ -28,6 +28,7 @@
 | [**Traffic**](#traffic) | See every simulator request. No code change |
 | [**Rules**](#rules-and-scripts) | Mock, block, slow down or edit requests |
 | [**Mock server**](#mock-server) | Record the API once, work offline |
+| [**Backend flows**](#backend-flows) | Use your local backend, compare responses, find contract drift |
 | [**Logs SDK**](#logs-sdk) | App logs and state on your Mac |
 | [**Simulator**](#simulator-tools) | Deep links, push, location, snapshots |
 | [**AI agents**](#ai-agents-mcp) | Your agent gets all of the above |
@@ -182,7 +183,7 @@ Press Start, then turn on the route for the emulator or phone in **Settings › 
 - Filter by app, method, status class, text, or conditions on any field (host, path, headers, content type, response body).
 - Save a set of conditions as a named filter.
 - Select a flow to see the request and response side by side. JSON is formatted and colored.
-- Right-click a flow: **Repeat**, **Edit and Repeat…**, **Copy as cURL**, **Export as HAR**, **Save to Task**, **Add to Bypass**, **Mock this response**.
+- Right-click a flow: **Repeat**, **Edit and Repeat…**, **Repeat Against ▸**, **Compare**, **Copy as cURL**, **Export as HAR**, **Save to Task**, **Add to Bypass**, **Mock this response**.
 - Turn on **Show logs** to see SDK log lines between the flows, by time.
 - **Pause** stops recording, not forwarding. Rules still apply.
 
@@ -242,6 +243,83 @@ What else you can do:
 - **Share** a set as a `.haroldmocks` file. Auth and cookie header values are masked.
 
 Only one set records or serves at a time. Rules always win over a serving set.
+
+</details>
+
+## Backend flows
+
+For the backend team of a mobile app: run the real app against your server, replay a bug, and see what changed in the API.
+
+### Backend targets
+
+![Traffic with the Local backend on and the Repeat Against menu](docs/media/screens/backend.png)
+
+Send the app's API to your local or staging server. No app build change.
+
+<details>
+<summary><b>How to use</b></summary>
+
+A **backend target** is a server that answers in place of the real API, for example `http://localhost:8080`. It belongs to a project.
+
+1. Open **Projects**, select your project and open **Backend Targets**. Or use **Traffic › Backend › Edit Backend Targets…**.
+2. Add a target: a name, `http` or `https`, a host and a port.
+3. Add the **source hosts** that it replaces, for example `api.example.com` or `*.example.com`. Harold suggests hosts from recent traffic.
+
+**Use a target for all traffic**
+
+- In **Traffic**, open the **Backend** menu and choose the target. Choose **Original** to stop.
+- Requests to the source hosts go to the target. Harold keeps the path, the query, the headers and the body. Other hosts do not change.
+- A bar in Traffic shows the active target. Redirected flows have a "→ ‹target›" tag.
+- The switch stays on after a restart. It wins over your own Map Remote rules. Map Local, Block and scripts still answer.
+- A source host in the bypass list cannot be redirected. Harold shows a warning for it.
+
+**Repeat one flow against a target**
+
+Right-click a flow (or a selection) and choose **Repeat Against ▸ ‹target›**. Harold sends the same request to the target. The new flow links to its original.
+
+</details>
+
+### Compare
+
+![Two responses side by side with the changes marked](docs/media/screens/compare.png)
+
+Put two responses side by side. See what was removed, added or changed.
+
+<details>
+<summary><b>How to use</b></summary>
+
+- Right-click a repeated flow and choose **Compare with Original**. Or select two flows and choose **Compare**.
+- JSON bodies align by JSON path, with sorted keys. Arrays compare by index. Text compares by line.
+- The counts show removed fields, type changes, changed values and added fields. **Changes only** hides the rest.
+- **Headers** compares the headers. **Copy Diff** and **Save to Task…** keep the result.
+- Binary bodies and bodies over 1 MB are not compared.
+
+</details>
+
+### Contract drift
+
+![The Drift tab of a mock set with the changed JSON paths of one endpoint](docs/media/screens/drift.png)
+
+Find where the real API no longer matches what you recorded.
+
+<details>
+<summary><b>How to use</b></summary>
+
+1. Record a mock set ([Mock server](#mock-server)). Its active variants are the baseline.
+2. Use the app against the real API.
+3. Open the set in **Mocks** and click the **Drift** tab.
+
+Harold compares the shape of the newest response of each endpoint with the baseline. Values do not count.
+
+| Drift | Kind |
+|---|---|
+| Removed field, type change | Breaking |
+| Added field, new status | Info |
+
+- **Breaking only** hides the info rows.
+- Select a row to see the changed JSON paths. **Compare…** opens both responses side by side.
+- **Accept as Baseline** saves the new response as the variant.
+- **Compare Variants…** in the menu of an entry compares two variants of the same request.
 
 </details>
 
@@ -310,9 +388,10 @@ Harold ships an MCP server, `harold-mcp`. Open **Settings › Agents** and click
 | Tasks | Import, sync and move tasks. Add notes and attachments |
 | Git | Read the log, a commit, or the diff of a task |
 | Builds | Run a profile, follow its status, read errors, launch the app |
-| Traffic | Query flows, wait for a request, copy as cURL, export HAR |
+| Traffic | Query flows, wait for a request, repeat a request, copy as cURL, export HAR |
+| Backend | List and save backend targets, switch the backend, repeat a flow against a target |
 | Rules | Create mocks, rules, scripts, breakpoints and network conditions |
-| Mocks | Create mock sets, record, serve, read coverage |
+| Mocks | Create mock sets, record, serve, read coverage and drift |
 | Logs | Query and wait for log lines, send overrides |
 | Simulator | Open links, send push, set location, restore snapshots, take screenshots |
 | UI | Read the screen, tap, type, swipe |
