@@ -1,67 +1,53 @@
+<div align="center">
+
+<img src="docs/media/icon.png" width="96" alt="Harold app icon">
+
 # Harold
 
-**A native macOS companion for iOS and Android developers.**
-
-Harold puts your tasks, git, builds, network traffic, mocks, device logs and simulators in one app. Your AI agent gets the same tools through MCP.
+**Your iOS and Android dev tools in one Mac app.**
 
 ![macOS 26+](https://img.shields.io/badge/macOS-26%2B-black) [![Latest release](https://img.shields.io/github/v/release/repfly/harold-releases)](https://github.com/repfly/harold-releases/releases/latest)
 
-**[Download the latest release](https://github.com/repfly/harold-releases/releases/latest)**
+### [Download the latest release](https://github.com/repfly/harold-releases/releases/latest)
 
----
+[Video tour](docs/media/harold-demo.mp4)
 
-## Contents
+</div>
 
-- [Features](#features)
-- [Install](#install)
-- [Getting started](#getting-started)
-- [Using Harold](#using-harold)
-  - [Task board](#task-board)
-  - [Git](#git)
-  - [Builds](#builds)
-  - [Traffic (MITM proxy)](#traffic-mitm-proxy)
-  - [Rules and scripts](#rules-and-scripts)
-  - [Mock server](#mock-server)
-  - [Logs SDK](#logs-sdk)
-  - [Simulator tools](#simulator-tools)
-  - [AI agents (MCP)](#ai-agents-mcp)
-- [Real devices](#real-devices)
+![A tour of Harold: board, git, builds, traffic, rules, mocks, logs and agents](docs/media/harold-demo.gif)
 
----
+<sub>The screens are mockups with sample data.</sub>
 
-## Features
+## At a glance
 
 | | |
 |---|---|
-| **Task board** | Import tickets from Azure DevOps, Jira or GitLab. Sync your sprint. Move cards and push the state back. |
-| **Git tracking** | Commits link to tasks by id. Pushes post one comment to the ticket. Read-only git view with diffs. |
-| **Builds** | Xcode and Gradle profiles with flags. Run on simulators, emulators, iPhones and Android phones. |
-| **Traffic** | HTTP/1.1 and HTTP/2 MITM proxy. Captures all simulators with no code change. HAR export, cURL, repeat. |
-| **Rules** | Map Local, Map Remote, Block, Breakpoint, Network Condition, Rewrite, and Proxyman-compatible JavaScript. |
-| **Mock server** | Record the whole API of an app, then serve it offline. See coverage against your OpenAPI spec. |
-| **Logs SDK** | Small iOS and Android SDKs stream logs and app state to the Mac, and take feature flag overrides. |
-| **Simulator tools** | Deep links, push, location, permissions, app snapshots, screenshots, recordings, disk cleanup. |
-| **Agents** | `harold-mcp` gives all of the above to Claude Code, Claude Desktop, Cursor and Codex. |
-
----
+| [**Task board**](#task-board) | Your sprint from Azure DevOps, Jira or GitLab |
+| [**Git**](#git) | Commits link to tasks by id |
+| [**Builds**](#builds) | Xcode and Gradle, one click per device |
+| [**Traffic**](#traffic) | See every simulator request. No code change |
+| [**Rules**](#rules-and-scripts) | Mock, block, slow down or edit requests |
+| [**Mock server**](#mock-server) | Record the API once, work offline |
+| [**Logs SDK**](#logs-sdk) | App logs and state on your Mac |
+| [**Simulator**](#simulator-tools) | Deep links, push, location, snapshots |
+| [**AI agents**](#ai-agents-mcp) | Your agent gets all of the above |
 
 ## Install
 
-1. Download `Harold-<version>.dmg` from the [latest release](https://github.com/repfly/harold-releases/releases/latest).
-2. Open it and drag Harold onto the Applications shortcut.
-3. Open Harold.
+1. Download the `.dmg` from the [latest release](https://github.com/repfly/harold-releases/releases/latest).
+2. Drag Harold to Applications.
+3. Open it. The **Welcome** window sets you up.
 
-Harold is signed and notarized by Apple. It needs macOS 26 or later.
+Signed and notarized by Apple. Needs macOS 26 or later. Updates come by themselves.
 
-**Updates:** Harold checks for updates once a day. Check now with **Harold › Check for Updates…**, or change the setting in **Settings › Updates**.
+<details>
+<summary><b>Updates and the Welcome window</b></summary>
 
----
+**Updates:** Harold checks once a day. Check now with **Harold › Check for Updates…**, or change the setting in **Settings › Updates**.
 
-## Getting started
+**Welcome window:** each step except the first can be skipped. Open it again with **Help › Welcome to Harold**.
 
-At first launch, the **Welcome** window walks you through setup. Each step except the first can be skipped. Open it again with **Help › Welcome to Harold**.
-
-1. **Your Mac.** Harold checks for Xcode, simulator runtimes, the Android SDK, `adb`, `git` and agent clients.
+1. **Your Mac.** Checks for Xcode, simulator runtimes, the Android SDK, `adb`, `git` and agent clients.
 2. **First project.** Choose a folder that holds an Xcode or Gradle project.
 3. **Tracker.** Connect Azure DevOps, Jira or GitLab with a personal access token.
 4. **Network capture.** Install the helper and trust the Harold certificate on your simulators.
@@ -70,11 +56,18 @@ At first launch, the **Welcome** window walks you through setup. Each step excep
 
 The **Getting Started** card at the bottom of the sidebar shows what is left.
 
+</details>
+
 ---
 
-## Using Harold
+## Task board
 
-### Task board
+![The task board with a selected task in the inspector](docs/media/screens/board.png)
+
+Your sprint on a board. Drag a card, and the ticket moves too.
+
+<details>
+<summary><b>How to use</b></summary>
 
 Every project has its own board. The default columns are To Do, In Progress, Resolved and Closed.
 
@@ -94,7 +87,7 @@ Every project has its own board. The default columns are To Do, In Progress, Res
 **Get tasks onto the board**
 
 - **Import:** paste a ticket id. The card goes into the column mapped to its tracker state.
-- **Sync:** the Sync button pulls the open items assigned to you in the current sprint (up to 100 per project). It never writes to the tracker.
+- **Sync:** pulls the open items assigned to you in the current sprint (up to 100 per project). It never writes to the tracker.
 
 **Work with cards**
 
@@ -105,9 +98,18 @@ Every project has its own board. The default columns are To Do, In Progress, Res
 
 > **Dry-run is on for each new project.** Tracker writes go to the task timeline only. Turn it off in the project settings when you trust the setup.
 
-### Git
+</details>
 
-Harold watches your repo and links commits to tasks. It finds the task id in the commit message, the branch name or a manual link. Each project can change the id pattern.
+## Git
+
+![Branches, the commit graph and a commit diff](docs/media/screens/git.png)
+
+Commits link to tasks by id. A push posts one comment to the ticket.
+
+<details>
+<summary><b>How to use</b></summary>
+
+Harold finds the task id in the commit message, the branch name or a manual link. Each project can change the id pattern.
 
 | Event | Default action |
 |---|---|
@@ -120,7 +122,16 @@ You can edit these rules per project. A commit that a rebase removed before a pu
 
 The **Git** screen shows branches, remotes, a commit graph and side-by-side or unified diffs. A task shows the combined diff of all its commits. The git view never writes.
 
-### Builds
+</details>
+
+## Builds
+
+![A running build with its issues and log](docs/media/screens/builds.png)
+
+Pick a profile and a device, press Run.
+
+<details>
+<summary><b>How to use</b></summary>
 
 A **build profile** holds a driver (Xcode or Gradle), a scheme or module, a configuration or variant, a device, flags and post-build steps.
 
@@ -141,11 +152,20 @@ Errors and warnings group by file in the Issues list. Click an issue to jump to 
 
 Harold checks that your configuration name exists before it builds. A wrong name like `Debug` instead of `Debug(DEV)` would otherwise build silently with a different configuration.
 
-### Traffic (MITM proxy)
+</details>
+
+## Traffic
+
+![Captured flows with the request and response of one flow](docs/media/screens/traffic.png)
+
+See every request your simulator apps make. No code change.
+
+<details>
+<summary><b>How to use</b></summary>
 
 Harold runs its own HTTPS proxy. It decrypts traffic with a root certificate that Harold makes for your Mac and keeps in the Keychain.
 
-**Capture iOS simulators (no code change)**
+**Capture iOS simulators**
 
 1. Open **Settings › Proxy › Simulator Capture** and click **Install Helper**. Approve it once in System Settings › General › Login Items & Extensions.
 2. In the same tab, click **Install CA** for each booted simulator.
@@ -168,7 +188,16 @@ Press Start, then turn on the route for the emulator or phone in **Settings › 
 
 Hosts with certificate pinning show a "pinned / handshake failed" badge. Add them to the bypass list, or turn pinning off in debug builds.
 
-### Rules and scripts
+</details>
+
+## Rules and scripts
+
+![The rule list and the Map Local editor](docs/media/screens/rules.png)
+
+Mock, block, slow down or edit any request.
+
+<details>
+<summary><b>How to use</b></summary>
 
 Rules act on all traffic. Open **Rules** and press `+`, or right-click a flow and choose **Create rule from flow**.
 
@@ -188,9 +217,16 @@ A rule matches on method, URL wildcard or regex, host, header, query, GraphQL op
 
 **Scenarios** are named rule folders. Turn a whole scenario on or off at once, for example "Sprint 32 demo". A build profile can turn on a scenario at launch. Share a scenario as a `.haroldrules` file, or import your Proxyman rules.
 
-### Mock server
+</details>
 
-A **mock set** records the API of one app and serves it back with no network.
+## Mock server
+
+![A mock set in Serve mode with its endpoint coverage](docs/media/screens/mocks.png)
+
+Record your API once. Then work with no network.
+
+<details>
+<summary><b>How to use</b></summary>
 
 1. Open **Mocks** and create a set. Choose the app, the hosts, or both.
 2. Set the mode to **Record** and use your app. Each response is saved by method, URL and status (GraphQL by operation and variables).
@@ -207,20 +243,34 @@ What else you can do:
 
 Only one set records or serves at a time. Rules always win over a serving set.
 
-### Logs SDK
+</details>
 
-Small SDKs for iOS and Android send logs and app state from your debug builds to Harold. They are compiled out of release builds.
+## Logs SDK
+
+![Live log sessions with an error entry in the inspector](docs/media/screens/logs.png)
+
+Your app's logs and state, live on your Mac. Debug builds only.
+
+<details>
+<summary><b>How to use</b></summary>
+
+Small SDKs for iOS and Android send logs and app state from your debug builds to Harold. They are compiled out of release builds. The **Logs SDK** step of the Welcome window shows how to add the SDK to your app.
 
 - The first time a device connects, Harold shows a pairing code. Allow it and pick a project.
 - The **Logs** screen filters by level, category and text. Pin lines, or save a selection to a task.
 - **State:** see the latest app state the SDK sent, for example the environment, the user and the screen.
 - **Overrides:** send feature flag values to the running app, for example `tutorials=off`.
 
-The **Logs SDK** step of the Welcome window shows how to add the SDK to your app.
+</details>
 
-### Simulator tools
+## Simulator tools
 
-The **Simulator** screen drives the booted iOS simulator or Android emulator. Pick the device and the app in the toolbar.
+Drive the booted simulator or emulator: links, push, location and more.
+
+<details>
+<summary><b>How to use</b></summary>
+
+Pick the device and the app in the toolbar of the **Simulator** screen.
 
 | Section | What it does |
 |---|---|
@@ -237,15 +287,23 @@ Save links, push payloads and locations as **presets** per project. Your agent c
 
 Physical Android phones support links and screenshots only.
 
-### AI agents (MCP)
+</details>
 
-Harold ships an MCP server, `harold-mcp`. It gives an agent the board, git, builds, traffic, rules, mocks, logs, simulator and UI driving.
+## AI agents (MCP)
 
-**Connect**
+![An agent session with its devices, builds and newest tool calls](docs/media/screens/agents.png)
 
-Open **Settings › Agents** and click **Connect** next to your client: Claude Code, Codex, Claude Desktop or Cursor. Harold edits the client's config for you and keeps a backup. Use **Copy Setup** in the ⋯ menu for a manual setup.
+Your agent builds, taps through the app, reads traffic and logs, and moves the card.
 
-**What an agent can do**
+<details>
+<summary><b>Connect an agent</b></summary>
+
+Harold ships an MCP server, `harold-mcp`. Open **Settings › Agents** and click **Connect** next to your client: Claude Code, Codex, Claude Desktop or Cursor. Harold edits the client's config for you and keeps a backup. Use **Copy Setup** in the ⋯ menu for a manual setup.
+
+</details>
+
+<details>
+<summary><b>What an agent can do</b></summary>
 
 | Area | What it can do |
 |---|---|
@@ -261,28 +319,37 @@ Open **Settings › Agents** and click **Connect** next to your client: Claude C
 
 A typical loop: the agent fixes a bug, builds and launches the app, taps through it, waits for the request, saves a screenshot to the task, and moves the card.
 
-**Agents screen**
-
 The **Agents** screen shows each session, its task, its recent tool calls, its running builds and the devices it holds. Harold never records typed text, payloads or bodies. A warning shows when rules named `TEMP…` are still on after the agent left.
 
-**Safety**
+</details>
+
+<details>
+<summary><b>Safety</b></summary>
 
 - Tracker writes from an agent obey dry-run and appear on the task timeline.
 - No agent can turn on network access, allow a proxy client, install the helper or pair a phone. You do these in the app.
 - Only one session can drive a device at a time. Click **Release** to take it back.
 
+</details>
+
 ---
 
 ## Real devices
 
-**iPhone (iOS 17+)**
+<details>
+<summary><b>iPhone (iOS 17+)</b></summary>
 
 - Builds, installs and launches over USB or Wi-Fi.
 - For traffic and logs, the iPhone must be on the same Wi-Fi as the Mac. Turn on **Settings › Proxy › Network Access**. It is off at each app start.
 - Allow each new device when Harold asks.
 - Install the certificate from **Settings › Proxy › iPhones**, or scan the QR code on that screen. Then turn on full trust in Settings › General › About › Certificate Trust Settings.
 
-**Android phone**
+</details>
+
+<details>
+<summary><b>Android phone</b></summary>
 
 - Works over USB or wireless debugging. Use **Pair Android over Wi-Fi…** in the device menu of Builds.
 - Traffic and logs go through `adb`, so no network access is needed.
+
+</details>
