@@ -10,7 +10,7 @@
 
 ### [Download the latest release](https://github.com/repfly/harold-releases/releases/latest)
 
-[Video tour](docs/media/harold-demo.mp4)
+[Launch video](docs/media/brag.mp4) · [Video tour](docs/media/harold-demo.mp4)
 
 </div>
 
