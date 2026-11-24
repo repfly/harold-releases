@@ -1,0 +1,96 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.alpr.harold",
+    "module": "harold-android-noop",
+    "version": "0.5.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.11.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "harold-android-noop-0.5.1.aar",
+          "url": "harold-android-noop-0.5.1.aar",
+          "size": 6651,
+          "sha512": "639421858d8e28f6fc8ac6d97e61e9450a494b399029d65ff37edf3690b508e1c9bdc25442315c3a55ca01b5343dc997b6c10852eb9a61a5c18142279c34ed39",
+          "sha256": "b4cb895639ff2c586b31d5997bffe84b774d5ec8c0a0bad22c8b8f60335c2fd7",
+          "sha1": "1104427788e83dedb379e7a82a38f008ddc37867",
+          "md5": "57258684878eea318eb974f858ba0afe"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "harold-android-noop-0.5.1.aar",
+          "url": "harold-android-noop-0.5.1.aar",
+          "size": 6651,
+          "sha512": "639421858d8e28f6fc8ac6d97e61e9450a494b399029d65ff37edf3690b508e1c9bdc25442315c3a55ca01b5343dc997b6c10852eb9a61a5c18142279c34ed39",
+          "sha256": "b4cb895639ff2c586b31d5997bffe84b774d5ec8c0a0bad22c8b8f60335c2fd7",
+          "sha1": "1104427788e83dedb379e7a82a38f008ddc37867",
+          "md5": "57258684878eea318eb974f858ba0afe"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "harold-android-noop-0.5.1-sources.jar",
+          "url": "harold-android-noop-0.5.1-sources.jar",
+          "size": 1886,
+          "sha512": "7c85bfbeb39e9626db6a71913714409c448959b81938a1bea86b35887e8e32ea86865653e580b12460e7929c70864c4615f83c42677fbb1c4bb1c81aba4f55e3",
+          "sha256": "ffc54763f39732b6f89792d8cb19a2db2f56d1ab3298dd4bbda0405abcd38441",
+          "sha1": "fa0034b6c5f731aafeeed20634be14d63501c267",
+          "md5": "df3c547f43cf956721be6ec8c7770982"
+        }
+      ]
+    }
+  ]
+}

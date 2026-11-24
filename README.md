@@ -29,7 +29,7 @@
 | [**Rules**](#rules-and-scripts) | Mock, block, slow down or edit requests |
 | [**Mock server**](#mock-server) | Record the API once, work offline |
 | [**Backend flows**](#backend-flows) | Use your local backend, compare responses, find contract drift |
-| [**Logs SDK**](#logs-sdk) | App logs and state on your Mac |
+| [**Logs SDK**](#logs-sdk) | App logs and state on your Mac. [Setup guide](docs/sdk.md) |
 | [**Simulator**](#simulator-tools) | Deep links, push, location, snapshots |
 | [**AI agents**](#ai-agents-mcp) | Your agent gets all of the above |
 
@@ -52,7 +52,7 @@ Signed and notarized by Apple. Needs macOS 26 or later. Updates come by themselv
 2. **First project.** Choose a folder that holds an Xcode or Gradle project.
 3. **Tracker.** Connect Azure DevOps, Jira or GitLab with a personal access token.
 4. **Network capture.** Install the helper and trust the Harold certificate on your simulators.
-5. **Logs SDK.** Add the SDK to your iOS or Android app.
+5. **Logs SDK.** Add the SDK to your iOS or Android app. The full steps are in the [SDK guide](docs/sdk.md).
 6. **Agents.** Connect your AI agent with one click.
 
 The **Getting Started** card at the bottom of the sidebar shows what is left.
@@ -327,12 +327,12 @@ Harold compares the shape of the newest response of each endpoint with the basel
 
 ![Live log sessions with an error entry in the inspector](docs/media/screens/logs.png)
 
-Your app's logs and state, live on your Mac. Debug builds only.
+Your app's logs and state, live on your Mac. **[Add the SDK to your app →](docs/sdk.md)**
 
 <details>
 <summary><b>How to use</b></summary>
 
-Small SDKs for iOS and Android send logs and app state from your debug builds to Harold. They are compiled out of release builds. The **Logs SDK** step of the Welcome window shows how to add the SDK to your app.
+Small SDKs for iOS (Swift Package) and Android (Maven) send logs and app state to Harold. You pick the builds that run them. The [SDK guide](docs/sdk.md) shows the setup.
 
 - The first time a device connects, Harold shows a pairing code. Allow it and pick a project.
 - The **Logs** screen filters by level, category and text. Pin lines, or save a selection to a task.

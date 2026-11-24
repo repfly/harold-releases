@@ -1,0 +1,103 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "dev.alpr.harold",
+    "module": "harold-android",
+    "version": "0.5.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.11.1"
+    }
+  },
+  "variants": [
+    {
+      "name": "releaseVariantReleaseApiPublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-api"
+      },
+      "dependencies": [
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "harold-android-0.5.1.aar",
+          "url": "harold-android-0.5.1.aar",
+          "size": 69886,
+          "sha512": "6dedf242bd202fc891cd588103ad1029eb712cb646220d01328d8abe605a497c5bf2fc2e30ca02e44c81aff275aa8bfff7240e7b147a80e677ea1c5eb98cf6f9",
+          "sha256": "33c07fd5b170715c1e398a2fc0040de75d9cb4412eeca14ca46ffabb7cadbb9e",
+          "sha1": "bb9258a889ee2025f4aa03a31680319600fbcaae",
+          "md5": "bfda39c635bfb4fe217edaa668dce661"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseRuntimePublication",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.libraryelements": "aar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "dependencies": [
+        {
+          "group": "com.squareup.okhttp3",
+          "module": "okhttp",
+          "version": {
+            "requires": "4.12.0"
+          }
+        },
+        {
+          "group": "org.jetbrains.kotlin",
+          "module": "kotlin-stdlib",
+          "version": {
+            "requires": "2.1.0"
+          }
+        }
+      ],
+      "files": [
+        {
+          "name": "harold-android-0.5.1.aar",
+          "url": "harold-android-0.5.1.aar",
+          "size": 69886,
+          "sha512": "6dedf242bd202fc891cd588103ad1029eb712cb646220d01328d8abe605a497c5bf2fc2e30ca02e44c81aff275aa8bfff7240e7b147a80e677ea1c5eb98cf6f9",
+          "sha256": "33c07fd5b170715c1e398a2fc0040de75d9cb4412eeca14ca46ffabb7cadbb9e",
+          "sha1": "bb9258a889ee2025f4aa03a31680319600fbcaae",
+          "md5": "bfda39c635bfb4fe217edaa668dce661"
+        }
+      ]
+    },
+    {
+      "name": "releaseVariantReleaseSourcePublication",
+      "attributes": {
+        "org.gradle.category": "documentation",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.docstype": "sources",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "harold-android-0.5.1-sources.jar",
+          "url": "harold-android-0.5.1-sources.jar",
+          "size": 12543,
+          "sha512": "7754d3c079f7c1bbc8d4190662fc1bbb283d8452b780929ae443529abfb9d1fa7b54dc4e03acf798fe39da8b8adf1bb8115ec174dbdcf395ada7e508bc07ab84",
+          "sha256": "f1fa00b93a686c933e877ec3ac68c8e8a68e462b39a5f605eda7ec878e1cea3a",
+          "sha1": "13ee73c2c93dd7ad211f5850f9cd756d15d60836",
+          "md5": "f09c53512a2e376d079afdeb0f28b2db"
+        }
+      ]
+    }
+  ]
+}
