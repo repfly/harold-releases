@@ -16,8 +16,6 @@
 
 ![A tour of Harold: board, git, builds, traffic, backend targets, compare, rules, mocks, drift, logs and agents](docs/media/harold-demo.gif)
 
-<sub>The screens are mockups with sample data.</sub>
-
 ## At a glance
 
 | | |
@@ -39,7 +37,7 @@
 2. Drag Harold to Applications.
 3. Open it. The **Welcome** window sets you up.
 
-Signed and notarized by Apple. Needs macOS 26 or later. Updates come by themselves.
+Needs macOS 26 or later.
 
 <details>
 <summary><b>Updates and the Welcome window</b></summary>
@@ -151,8 +149,6 @@ A **build profile** holds a driver (Xcode or Gradle), a scheme or module, a conf
 
 Errors and warnings group by file in the Issues list. Click an issue to jump to the log line. Double-click to open the file.
 
-Harold checks that your configuration name exists before it builds. A wrong name like `Debug` instead of `Debug(DEV)` would otherwise build silently with a different configuration.
-
 </details>
 
 ## Traffic
@@ -164,15 +160,11 @@ See every request your simulator apps make. No code change.
 <details>
 <summary><b>How to use</b></summary>
 
-Harold runs its own HTTPS proxy. It decrypts traffic with a root certificate that Harold makes for your Mac and keeps in the Keychain.
-
 **Capture iOS simulators**
 
 1. Open **Settings › Proxy › Simulator Capture** and click **Install Helper**. Approve it once in System Settings › General › Login Items & Extensions.
 2. In the same tab, click **Install CA** for each booted simulator.
 3. In **Traffic**, keep the **Simulator Capture** switch on and press **Start**.
-
-While capture is on, Harold records only simulator apps. Everything else on your Mac passes through untouched. Stop, quit and even a crash restore your own proxy settings.
 
 **Capture Android**
 
@@ -376,7 +368,7 @@ Your agent builds, taps through the app, reads traffic and logs, and moves the c
 <details>
 <summary><b>Connect an agent</b></summary>
 
-Harold ships an MCP server, `harold-mcp`. Open **Settings › Agents** and click **Connect** next to your client: Claude Code, Codex, Claude Desktop or Cursor. Harold edits the client's config for you and keeps a backup. Use **Copy Setup** in the ⋯ menu for a manual setup.
+Harold ships an MCP server, `harold-mcp`. Open **Settings › Agents** and click **Connect** next to your client: Claude Code, Codex, Claude Desktop or Cursor. Use **Copy Setup** in the ⋯ menu for a manual setup.
 
 </details>
 
@@ -396,9 +388,7 @@ Harold ships an MCP server, `harold-mcp`. Open **Settings › Agents** and click
 | Simulator | Open links, send push, set location, restore snapshots, take screenshots |
 | UI | Read the screen, tap, type, swipe |
 
-A typical loop: the agent fixes a bug, builds and launches the app, taps through it, waits for the request, saves a screenshot to the task, and moves the card.
-
-The **Agents** screen shows each session, its task, its recent tool calls, its running builds and the devices it holds. Harold never records typed text, payloads or bodies. A warning shows when rules named `TEMP…` are still on after the agent left.
+The **Agents** screen shows each session, its task, its recent tool calls, its running builds and the devices it holds. A warning shows when rules named `TEMP…` are still on after the agent left.
 
 </details>
 
